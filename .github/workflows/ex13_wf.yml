@@ -1,6 +1,6 @@
 name: test variables workflow
 on:
-  workflow_dispatch_variable
+  workflow_dispatch
 jobs:
   initialize_variable:
     runs-on: ubuntu-latest
