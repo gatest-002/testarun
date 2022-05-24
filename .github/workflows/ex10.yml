@@ -14,15 +14,26 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status 
-   example-job:
+      - run: echo "🍏 This job's status is ${{ job.status }}."
+  example-job:
     name: Save output
-      steps:
-        - shell: bash
-          run: |
-            expr 1 + 1 > output.log
-        - name: Upload output file
-          uses: actions/upload-artifact@v3
-          with:
-            name: output-log-file
-            path: output.log
+    runs-on: ubuntu-latest
+    steps:
+      - shell: bash
+        run: |
+          expr 1 + 1 > output.log
+      - name: Upload output file
+        uses: actions/upload-artifact@v3
+        with:
+          name: output-log-file
+          path: output.log
+  example-job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download single artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: output-log-file
+      - shell: bash
+        run: |
+          ls output.log
