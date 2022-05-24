@@ -17,7 +17,7 @@ jobs:
       - run: echo "🍏 This job's status is ${{ job.status }}."
   example-job:
     name: Save output
-    needs: Explore-GitHub-Actions
+    runs-on: ubuntu-latest
     steps:
       - shell: bash
         run: |
@@ -27,13 +27,13 @@ jobs:
         with:
           name: output-log-file
           path: output.log
-  example2-job:
-    needs: example-job	 
+  example-job1:
+    runs-on: ubuntu-latest
     steps:
-      - name: Download a single artifact
+      - name: Download single artifact
         uses: actions/download-artifact@v3
         with:
           name: output-log-file
       - shell: bash
         run: |
-         	ls output.log
+          ls output.log
