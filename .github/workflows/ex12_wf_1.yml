@@ -2,7 +2,7 @@ name: dispatch workflow
 on:
   workflow_dispatch
 jobs:
-  dispatch workflow_job:
+  say_disp:
     runs-on: ubuntu-latest
     steps:
       - name: msg
